@@ -20,7 +20,7 @@ def main():
 
     # Get the list of devices
     devices_url = f"{vmanage_base_url}/dataservice/device"
-    response = session.get(devices_url)
+    response = session.get(devices_url, verify=False)
 
     if response.status_code == 200:
         devices_data = response.json()
@@ -36,7 +36,7 @@ def main():
             if device_type not in ["vmanage" , "vsmart", "vbond", "AP-vedge"]:
                 # Fetch interfaces for the device
                 interfaces_url = f"{vmanage_base_url}/dataservice/device/interface?deviceId={device_id}"
-                interfaces_response = session.get(interfaces_url)
+                interfaces_response = session.get(interfaces_url, verify=False)
                 #ipdb.set_trace()
                 
                 if interfaces_response.status_code == 200:
