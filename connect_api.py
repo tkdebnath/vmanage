@@ -68,7 +68,7 @@ if __name__=='__main__':
     main()
     
     directory = "/mnt/data/file_server_storage/wan_ip"
-    Path.mkdir(directory, exist_ok=True)
+    Path(directory).mkdir(parents=True, exist_ok=True)
     
     if len(dict_db) > 0:
         with open(file=f"{directory}/WAN_IPs.txt", mode="w", encoding="utf-8") as fp:
